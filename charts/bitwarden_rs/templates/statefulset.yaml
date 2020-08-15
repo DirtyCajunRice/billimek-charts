@@ -1,3 +1,4 @@
+{{- $fullName := include "bitwarden_rs.fullname" . -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -56,7 +57,7 @@ spec:
                 name: {{ .existingSecret.name | quote }}
                 key: {{ .existingSecret.tokenKey | quote }}
                 {{- else }}
-                name: {{ include "bitwarden_rs.fullname" . }}
+                name: {{ $fullName }}
                 key: admin-token
                 {{- end }}
               {{- end }}
