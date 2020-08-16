@@ -20,7 +20,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 env:
- TZ: UTC
+  TZ: UTC
 
 service:
   type: ClusterIP
