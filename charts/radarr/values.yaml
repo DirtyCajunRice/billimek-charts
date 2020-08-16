@@ -1,14 +1,9 @@
 # Default values for radarr.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 
 image:
-  repository: linuxserver/radarr
-  tag: v0.2.0.1480-ls58
+  repository: itscontained/radarr
   pullPolicy: IfNotPresent
-
-# upgrade strategy type (e.g. Recreate or RollingUpdate)
-strategyType: Recreate
+  tag: ""
 
 # Probes configuration
 probes:
@@ -21,30 +16,11 @@ probes:
     failureThreshold: 5
     timeoutSeconds: 10
 
-# Prometheus Metrics
-exportarr:
-  enabled: false
-  image:
-    repository: onedr0p/exportarr
-    tag: v0.3.0
-    pullPolicy: IfNotPresent
-  url: "http://radarr.default.svc.cluster.local:7878"
-  apikey:
-  port: 9708
-  serviceMonitor:
-    enabled: false
-    namespace: default
-    path: /metrics
-    interval: 4m
-    scrapeTimeout: 90s
-    additionalLabels: {}
-
 nameOverride: ""
 fullnameOverride: ""
 
-timezone: UTC
-puid: 1001
-pgid: 1001
+env:
+ TZ: UTC
 
 service:
   type: ClusterIP
@@ -59,13 +35,7 @@ service:
   ##
   annotations: {}
   labels: {}
-  ## Use loadBalancerIP to request a specific static IP,
-  ## otherwise leave blank
-  ##
-  loadBalancerIP:
-  # loadBalancerSourceRanges: []
-  ## Set the externalTrafficPolicy in the Service to either Cluster or Local
-  # externalTrafficPolicy: Cluster
+  additionalSpec: {}
 
 ingress:
   enabled: false
@@ -120,13 +90,21 @@ persistence:
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
-  extraExistingClaimMounts: []
-    # - name: external-mount
-    #   mountPath: /srv/external-mount
-    ## A manually managed Persistent Volume and Claim
-    ## If defined, PVC must be created manually before volume will be bound
-    #   existingClaim:
-    #   readOnly: true
+
+additionalVolumes: []
+
+additionalVolumeMounts: []
+
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+# runAsUser: 1000
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -147,5 +125,3 @@ tolerations: []
 affinity: {}
 
 podAnnotations: {}
-
-deploymentAnnotations: {}

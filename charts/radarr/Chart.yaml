@@ -1,17 +1,20 @@
-apiVersion: v1
-appVersion: v0.2.0.1480-ls58
-description: Radarr is a movie downloading client
+apiVersion: v2
 name: radarr
-version: 4.1.3
+description: Radarr is an independent fork of Sonarr reworked for automatically downloading movies via Usenet and BitTorrent
+type: application
+version: 5.0.0
+appVersion: 3.0.0.3411
 keywords:
   - radarr
   - usenet
   - bittorrent
 home: https://github.com/billimek/billimek-charts/tree/master/charts/radarr
-icon: https://avatars3.githubusercontent.com/u/25025331?s=400&v=4
 sources:
-  - https://hub.docker.com/r/linuxserver/radarr/
+  - https://hub.docker.com/r/itscontained/radarr/
   - https://github.com/Radarr/Radarr/
 maintainers:
   - name: billimek
     email: jeff@billimek.com
+  - name: DirtyCajunRice
+    email: nick@cajun.pro
+icon: https://avatars3.githubusercontent.com/u/25025331?s=400&v=4
