@@ -1,7 +1,7 @@
-{{- if eq .Values.persistence.type "statefulset" }}
+{{- if eq .Values.persistence.type "deployment" }}
   {{- $fullName := include "bitwardenrs.fullname" . -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ $fullName }}
   labels:
@@ -13,7 +13,6 @@ spec:
   selector:
     matchLabels:
   {{- include "bitwardenrs.selectorLabels" . | nindent 6 }}
-  serviceName: {{ $fullName }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}

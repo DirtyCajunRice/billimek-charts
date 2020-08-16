@@ -48,7 +48,10 @@ bitwardenrs:
       userKey: ""
       passwordKey: ""
 
+env: {}
+
 persistence:
+  type: statefulset
   enabled: false
   size: 1Gi
   accessMode: ReadWriteOnce
@@ -82,6 +85,13 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  ## Provide any additional annotations which may be required. This can be used to
+  ## set the LoadBalancer service type to internal only.
+  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
+  ##
+  annotations: {}
+  labels: {}
+  additionalSpec: {}
 
 ingress:
   enabled: false
