@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "bitwarden_rs.name" -}}
+{{- define "bitwardenrs.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "bitwarden_rs.fullname" -}}
+{{- define "bitwardenrs.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "bitwarden_rs.chart" -}}
+{{- define "bitwardenrs.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "bitwarden_rs.labels" -}}
-helm.sh/chart: {{ include "bitwarden_rs.chart" . }}
-{{ include "bitwarden_rs.selectorLabels" . }}
+{{- define "bitwardenrs.labels" -}}
+helm.sh/chart: {{ include "bitwardenrs.chart" . }}
+{{ include "bitwardenrs.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "bitwarden_rs.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "bitwarden_rs.name" . }}
+{{- define "bitwardenrs.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "bitwardenrs.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "bitwarden_rs.serviceAccountName" -}}
+{{- define "bitwardenrs.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "bitwarden_rs.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "bitwardenrs.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

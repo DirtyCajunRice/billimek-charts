@@ -1,4 +1,4 @@
-# Default values for bitwarden_rs.
+# Default values for bitwardenrs.
 
 replicaCount: 1
 
@@ -11,7 +11,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-bitwarden_rs:
+bitwardenrs:
   domain: ""
   signupsAllowed: false
   websockets:

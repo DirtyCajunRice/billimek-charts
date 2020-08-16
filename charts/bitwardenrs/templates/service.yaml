@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bitwarden_rs.fullname" . }}
+  name: {{ include "bitwardenrs.fullname" . }}
   labels:
-    {{- include "bitwarden_rs.labels" . | nindent 4 }}
+    {{- include "bitwardenrs.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -11,11 +11,11 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-    {{- if .Values.bitwarden_rs.websockets.enabled }}
-    - port: {{ .Values.bitwarden_rs.websockets.port }}
+    {{- if .Values.bitwardenrs.websockets.enabled }}
+    - port: {{ .Values.bitwardenrs.websockets.port }}
       targetPort: websocket
       protocol: TCP
       name: websocket
     {{- end }}
   selector:
-    {{- include "bitwarden_rs.selectorLabels" . | nindent 4 }}
+    {{- include "bitwardenrs.selectorLabels" . | nindent 4 }}

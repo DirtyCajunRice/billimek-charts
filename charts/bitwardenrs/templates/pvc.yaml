@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ include "bitwarden_rs.fullname" . }}
+  name: {{ include "bitwardenrs.fullname" . }}
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode | quote }}
