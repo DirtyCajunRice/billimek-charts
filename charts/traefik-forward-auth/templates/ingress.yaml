@@ -19,6 +19,7 @@ metadata:
     {{- if and .Values.traefikForwardAuth.middleware.enabled .Values.traefikForwardAuth.authHost }}
     traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-{{ .Values.traefikForwardAuth.middleware.name | default "traefik-forward-auth" }}@kubernetescrd
   {{- end }}
+  {{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
@@ -40,6 +41,6 @@ spec:
             backend:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
-    {{- end }}
+  {{- end }}
   {{- end }}
   {{- end }}

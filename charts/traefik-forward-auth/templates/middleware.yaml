@@ -1,3 +1,4 @@
+{{- if .Values.traefikForwardAuth.middleware.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -7,3 +8,4 @@ spec:
     address: "http://{{ include "traefik-forward-auth.fullname" . }}:{{ .Values.service.port }}"
     authResponseHeaders:
       - X-Forwarded-User
+  {{- end }}
