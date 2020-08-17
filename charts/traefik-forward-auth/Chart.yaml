@@ -14,5 +14,5 @@ home: https://github.com/billimek/billimek-charts/tree/master/charts/traefik-for
 sources:
   - https://github.com/thomseddon/traefik-forward-auth
 maintainers:
-  - name: Nicholas St. Germain
+  - name: DirtyCajunRice
     email: nick@cajun.pro
