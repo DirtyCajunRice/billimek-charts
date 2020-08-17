@@ -50,6 +50,9 @@ traefikForwardAuth:
     # example_public:
     #   action: allow
     #   rule: Host("stats.example.com") && PathPrefix("/api/public")
+  middleware:
+    enabled: false
+    name: ""
   providers:
     google:
       enabled: false
